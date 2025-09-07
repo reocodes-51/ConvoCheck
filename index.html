@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ConvoCheck</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <h1>Analyze Discussions with AI</h1>
+
+  <marquee behavior="scroll" direction="left">
+    Paste your discussion thread below to get an instant analysis and identify potentially problematic comments.
+  </marquee>
+
+  <textarea id="threadInput" placeholder="Enter discussion text (one comment per line)..."></textarea><br>
+  <button onclick="analyze()">Analyze Thread</button>
+
+  <h2>Gemini Analysis</h2>
+  <pre id="summary"></pre>
+
+  <h2>Analysis Summary</h2>
+  <div id="Analysis Summary"></div>
+
+  <h2>Flagged Comments</h2>
+  <div id="flaggedComments"></div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
