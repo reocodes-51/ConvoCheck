@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #f4f4f4;
+}
+
+h1 {
+  color: #333;
+}
+
+textarea {
+  width: 80%;
+  height: 120px;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+#summary {
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+  width: 80%;
+  margin-top: 10px;
+}
+
+#flaggedComments {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #1e1e1e;
+  color: white;
+  border-radius: 5px;
+  width: 80%;
+}
+
+#flaggedComments p {
+  padding: 8px;
+  margin: 5px 0;
+  border-left: 4px solid red;
+}
