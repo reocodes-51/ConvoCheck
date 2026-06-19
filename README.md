@@ -36,10 +36,7 @@ ConvoCheck/
 ---
 
 ## 👥 Team Alpha Next
-
-* **Frontend:** Bhavya Vaish, Rajyavardhan Singh Rathore
-* **Backend:** Sharad Gupta, Arpit Jain
-
+Bhavya Vaish, Rajyavardhan Singh Rathore ,Sharad Gupta
 ---
 
 ## ⚙️ Installation & Setup
