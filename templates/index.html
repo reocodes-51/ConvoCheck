@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ConvoCheck</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="hero">
+            <h1>ConvoCheck</h1>
+
+            <p>
+                AI-powered discussion analysis, sentiment detection,
+                and toxicity moderation.
+            </p>
+        </div>
+
+        <div class="input-card">
+
+            <h2>Discussion Thread</h2>
+
+            <p class="subtitle">
+                Paste comments below. Enter one comment per line.
+            </p>
+
+            <textarea
+                id="threadInput"
+                placeholder="Example:
+
+I love this product.
+The delivery was delayed.
+Customer support solved my issue quickly.
+This service is terrible.">
+            </textarea>
+
+            <button onclick="analyze()">
+                Analyze Discussion
+            </button>
+
+        </div>
+
+        <div class="results-grid">
+
+            <div class="card">
+
+                <h2>AI Analysis</h2>
+
+                <pre id="summary">
+Analysis results will appear here...
+                </pre>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Statistics</h2>
+
+                <div id="analysisSummary">
+
+                    <p>Total Comments: -</p>
+                    <p>Safe Comments: -</p>
+                    <p>Toxic Comments: -</p>
+                    <p>Sentiment: -</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Profanity Detection</h2>
+
+            <div id="flaggedComments">
+
+                <p class="placeholder">
+                    Moderation results will appear here...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>
