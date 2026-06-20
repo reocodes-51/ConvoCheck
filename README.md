@@ -103,7 +103,6 @@ This project was developed collaboratively by:
 
 * **Bhavya Vaish**
 * **Rajyavardhan Singh Rathore**
-* **Sharad Gupta**
 
 ## ⭐ Support
 
