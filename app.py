@@ -1,17 +1,21 @@
 from flask import Flask, request, render_template, jsonify
 import google.generativeai as genai
 from better_profanity import profanity
+from dotenv import load_dotenv
+import os
+import re
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 
-import os
-from dotenv import load_dotenv
-
-load_dotenv()
-
+# Configure Gemini
 genai.configure(
     api_key=os.getenv("GEMINI_API_KEY")
 )
+
+# Load profanity dictionary
 profanity.load_censor_words()
 
 
@@ -22,11 +26,25 @@ def home():
 
 @app.route("/analyze", methods=["POST"])
 def analyze():
+
     data = request.get_json()
 
     thread_text = data.get("thread_text", "")
     comments = data.get("comments", [])
 
+    # Empty input check
+    if len(comments) == 0:
+        return jsonify({
+            "analysis": "Please enter some comments.",
+            "flagged": [],
+            "sentiment": "Unknown",
+            "total_comments": 0,
+            "toxic_comments": 0,
+            "safe_comments": 0,
+            "toxicity_percentage": 0
+        })
+
+    # Profanity Detection
     flagged_comments = []
 
     for comment in comments:
@@ -42,61 +60,56 @@ def analyze():
     )
 
     safe_count = len(comments) - toxic_count
+
     toxicity_percentage = round(
-    (toxic_count / len(comments)) * 100,
-    2
+        (toxic_count / len(comments)) * 100,
+        2
     )
 
-    if len(comments) == 0:
-        return jsonify({
-    "analysis": response_text,
-    "flagged": flagged_comments,
-    "sentiment": sentiment,
-    "total_comments": len(comments),
-    "toxic_comments": toxic_count,
-    "safe_comments": safe_count,
-    "toxicity_percentage": toxicity_percentage
-    })
-
+    # Gemini Prompt
     prompt = f"""
-Analyze the following discussion.
+Analyze the following discussion thread.
 
-Thread:
+THREAD:
 {thread_text}
 
-Comments:
+COMMENTS:
 {comments}
 
-Provide:
+Provide the response in this format:
 
 Summary:
-(2-3 sentences)
+(2-3 sentence summary)
 
 Sentiment:
-(Positive / Negative / Neutral)
+Positive / Negative / Neutral
 
 Key Topics:
-(2-3 bullet points)
+- Topic 1
+- Topic 2
+- Topic 3
 """
 
     try:
-        model = genai.GenerativeModel("models/gemini-2.5-flash")
-        response = model.generate_content(prompt)
+        model = genai.GenerativeModel(
+            "models/gemini-2.5-flash"
+        )
 
-        import re
+        response = model.generate_content(prompt)
 
         response_text = response.text
 
+        # Extract sentiment
         sentiment = "Unknown"
 
         match = re.search(
-            r"Sentiment.*?\n\s*(Positive|Negative|Neutral)",
+            r"Sentiment.*?(Positive|Negative|Neutral)",
             response_text,
             re.IGNORECASE | re.DOTALL
         )
 
         if match:
-            sentiment = match.group(1)
+            sentiment = match.group(1).capitalize()
 
         return jsonify({
             "analysis": response_text,
@@ -104,17 +117,20 @@ Key Topics:
             "sentiment": sentiment,
             "total_comments": len(comments),
             "toxic_comments": toxic_count,
-            "safe_comments": safe_count
+            "safe_comments": safe_count,
+            "toxicity_percentage": toxicity_percentage
         })
 
     except Exception as e:
+
         return jsonify({
-            "analysis": f"Gemini Error: {str(e)}",
+            "analysis": f"Gemini Error:\n{str(e)}",
             "flagged": flagged_comments,
             "sentiment": "Unknown",
             "total_comments": len(comments),
             "toxic_comments": toxic_count,
-            "safe_comments": safe_count
+            "safe_comments": safe_count,
+            "toxicity_percentage": toxicity_percentage
         })
 
 
