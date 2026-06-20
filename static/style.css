@@ -1,0 +1,159 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0b1120;
+    color:white;
+    font-family:'Segoe UI',sans-serif;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.hero h1{
+    font-size:3rem;
+    font-weight:700;
+    color:white;
+    letter-spacing:1px;
+}
+
+.hero p{
+    color:#94a3b8;
+    margin-top:10px;
+    font-size:1.1rem;
+}
+
+.input-card{
+    background:#111827;
+    border:1px solid #1e293b;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.input-card h2{
+    margin-bottom:15px;
+    color:#f8fafc;
+}
+
+textarea{
+    width:100%;
+    height:180px;
+
+    background:#0f172a;
+    color:white;
+
+    border:1px solid #334155;
+    border-radius:12px;
+
+    padding:15px;
+    font-size:15px;
+
+    resize:none;
+}
+
+textarea:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+button{
+    margin-top:15px;
+
+    background:#2563eb;
+    color:white;
+
+    border:none;
+    border-radius:12px;
+
+    padding:14px 30px;
+
+    font-size:15px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1d4ed8;
+}
+
+.results-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.card{
+    background:#111827;
+
+    border:1px solid #1e293b;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    min-height:220px;
+}
+
+.card h2{
+    color:white;
+    margin-bottom:15px;
+    font-size:1.4rem;
+}
+
+#summary{
+    color:#cbd5e1;
+    white-space:pre-wrap;
+    line-height:1.8;
+    font-size:16px;
+}
+
+#analysisSummary p{
+    margin:12px 0;
+    color:#cbd5e1;
+}
+
+#flaggedComments p{
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
+}
+
+.safe{
+    background:#064e3b;
+    color:white;
+    border-left:6px solid #22c55e;
+}
+
+.toxic{
+    background:#7f1d1d;
+    color:white;
+    border-left:6px solid #ef4444;
+}
+
+@media(max-width:900px){
+
+    .results-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:2rem;
+    }
+}

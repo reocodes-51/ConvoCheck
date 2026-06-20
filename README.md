@@ -1,95 +1,111 @@
 # ConvoCheck
 
-ConvoCheck is an **AI-powered web application** that generates summaries of input chats while also detecting toxicity within conversations. It provides users with concise, meaningful insights from long discussions, making online communication more effective and safe.
-
----
+ConvoCheck is an AI-powered web application that generates concise summaries of conversations while also detecting toxic content within chats. It helps users quickly understand lengthy discussions and promotes safer online communication by identifying inappropriate language.
 
 ## 🚀 Features
 
-* **Chat Summarization** using Google Gemini `gemini-1.5-flash` API.
-* **Toxicity Detection** powered by the `profanity` library running locally.
-* **Interactive Web Interface** built with HTML, CSS, and JavaScript.
-* **Backend Processing** powered by Flask and Python.
-
----
+* **AI-Powered Chat Summarization** using Google's Gemini 1.5 Flash model.
+* **Toxicity Detection** using the local `profanity` library.
+* **Interactive User Interface** built with HTML, CSS, and JavaScript.
+* **Fast Backend Processing** powered by Flask and Python.
+* **Real-Time Analysis** of user-provided conversations.
 
 ## 🛠️ Tech Stack
 
-* **Frontend:** HTML, CSS, JavaScript
-* **Backend:** Flask (Python)
-* **AI Model:** Google `gemini-1.5-flash` API
-* **Toxicity Detection:** Profanity library (local)
+### Frontend
 
----
+* HTML
+* CSS
+* JavaScript
+
+### Backend
+
+* Flask (Python)
+
+### AI & NLP
+
+* Google Gemini 1.5 Flash API
+* Profanity Library
 
 ## 📂 Project Structure
 
-```
+```text
 ConvoCheck/
-│── static/        # CSS, JS, Images
-│── templates/     # HTML templates
-│── app.py         # Flask backend
-│── requirements.txt
-│── README.md
+│
+├── static/          # CSS, JavaScript, and assets
+├── templates/       # HTML templates
+├── app.py           # Flask backend
+├── requirements.txt
+└── README.md
 ```
-
----
-
-## 👥 Team Alpha Next
-
-* **Frontend:** Bhavya Vaish, Rajyavardhan Singh Rathore
-* **Backend:** Sharad Gupta, Arpit Jain
-
----
 
 ## ⚙️ Installation & Setup
 
-1. Clone the repository:
+### 1. Clone the Repository
 
-   ```bash
-   git clone https://github.com/<your-repo>/ConvoCheck.git
-   cd ConvoCheck
-   ```
+```bash
+git clone https://github.com/<your-username>/ConvoCheck.git
+cd ConvoCheck
+```
 
-2. Create and activate a virtual environment:
+### 2. Create a Virtual Environment
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate   # For Linux/Mac
-   venv\Scripts\activate      # For Windows
-   ```
+#### Windows
 
-3. Install dependencies:
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+#### Linux / macOS
 
-4. Add your Google Gemini API key to the project (e.g., in `.env` file).
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
 
-5. Run the Flask app:
+### 3. Install Dependencies
 
-   ```bash
-   python app.py
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-6. Open the app in your browser:
+### 4. Configure API Key
 
-   ```
-   http://127.0.0.1:5000
-   ```
+Create a `.env` file and add your Google Gemini API key:
 
----
+```env
+GEMINI_API_KEY=your_api_key_here
+```
 
-## 📜 License
+### 5. Run the Application
 
-This project is developed by **Team Alpha Next**. Feel free to use and modify with proper attribution.
+```bash
+python app.py
+```
 
----
+### 6. Open in Browser
 
-## 🌟 Future Enhancements
+```text
+http://127.0.0.1:5000
+```
 
-* Multi-language support for summarization.
-* Advanced toxicity classification.
-* Export summaries in PDF/Docx.
-* Real-time chat summarization.# ConvoCheck
+## 🎯 How It Works
+
+1. Enter or paste a conversation into the application.
+2. The Gemini API generates a concise summary of the chat.
+3. The toxicity detection module scans the conversation for offensive or inappropriate language.
+4. Results are displayed through an easy-to-use web interface.
+
+## 👥 Team Alpha Next
+
+This project was developed collaboratively by:
+
+* **Bhavya Vaish**
+* **Rajyavardhan Singh Rathore**
+* **Sharad Gupta**
+
+## ⭐ Support
+
+If you found this project useful, consider giving the repository a **Star ⭐** on GitHub.
+
